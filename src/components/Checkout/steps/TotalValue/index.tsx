@@ -1,8 +1,8 @@
-import { Tail } from "@/assets/icons/tail";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import { Badge } from "@mui/material";
 import { useEffect, useState } from "react";
+import { Tail } from "../../../../assets/icons/tail";
 import {
   BadgeContent,
   BadgeInstallments,
@@ -66,8 +66,8 @@ export const TotalValueOptions = (props: {
     setSelectedItems(new Array(generatedInstallments.length).fill(false));
   }, []);
 
-  const handleItemClick = (index: number, value: string, times: string) => {
-    props.times(times);
+  const handleItemClick = (index: number, value: string, times: number) => {
+    props.times(times as any);
     props.value(value);
     props.type("CARD");
     setSelectedItems((prevSelected) => prevSelected.map((_, i) => i === index));
@@ -125,7 +125,9 @@ export const TotalValueOptions = (props: {
           <ValueTimesContainer
             key={items.times}
             selected={selectedItems[index]}
-            onClick={() => handleItemClick(index, items.value, items.times)}
+            onClick={() =>
+              handleItemClick(index, items.value, items.times as number)
+            }
           >
             {index === 0 ? (
               <Badge

@@ -17,8 +17,8 @@ export const Checkout = () => {
       title: "João, como você quer pagar?",
       child: (
         <TotalValueOptions
-          times={setTimesValue}
-          value={setTotalValue}
+          times={setTimesValue as any}
+          value={setTotalValue as any}
           type={setTypePayment}
         />
       ),
@@ -69,6 +69,7 @@ export const Checkout = () => {
           fontSize: "1rem",
           marginTop: ".5rem",
         }}
+        disabled={currentStep >= 2 || !totalValue}
         onClick={handleSteps}
       >
         Próximo

@@ -54,8 +54,8 @@ export const Payment = (props: {
           activeStep={props.type === "CARD" ? 1 : 0}
           orientation="vertical"
         >
-          {steps.map((step) => (
-            <Step key={step.label}>
+          {steps.map((step, idx) => (
+            <Step key={idx}>
               <StepLabel
                 StepIconProps={{
                   sx: {
