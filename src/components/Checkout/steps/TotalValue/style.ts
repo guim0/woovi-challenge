@@ -111,10 +111,12 @@ export const BannerContainer = styled.div`
     gap: 0.3rem;
     align-items: center;
     height: 32.6px;
-    margin-right: -4px;
+    margin-right: -5px;
     padding-right: 3px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
     padding: 0 0.4rem;
     color: white;
     background-color: #133a6f;

@@ -24,7 +24,11 @@ type Installment = {
   pix: string;
 };
 
-export const TotalValueOptions = () => {
+export const TotalValueOptions = (props: {
+  value: (amount: string) => void;
+  times: (installments: string) => void;
+  type: (sortOFPayment: string) => void;
+}) => {
   const [pixSelected, setPixSelected] = useState(false);
   const [installments, setInstallments] = useState<Installment[]>([]);
   const [selectedItems, setSelectedItems] = useState<boolean[]>([]);
@@ -62,7 +66,10 @@ export const TotalValueOptions = () => {
     setSelectedItems(new Array(generatedInstallments.length).fill(false));
   }, []);
 
-  const handleItemClick = (index: number) => {
+  const handleItemClick = (index: number, value: string, times: string) => {
+    props.times(times);
+    props.value(value);
+    props.type("CARD");
     setSelectedItems((prevSelected) => prevSelected.map((_, i) => i === index));
     setPixSelected(false);
   };
@@ -81,6 +88,7 @@ export const TotalValueOptions = () => {
         <PixSectionCard
           onClick={() => {
             setPixSelected(!pixSelected);
+            props.value(installments[0]?.pix), props.type("PIX");
           }}
           selected={pixSelected}
         >
@@ -117,7 +125,7 @@ export const TotalValueOptions = () => {
           <ValueTimesContainer
             key={items.times}
             selected={selectedItems[index]}
-            onClick={() => handleItemClick(index)}
+            onClick={() => handleItemClick(index, items.value, items.times)}
           >
             {index === 0 ? (
               <Badge
