@@ -1,4 +1,4 @@
-# This i a attempt of a Checkout payment, totally mocked.
+# Checkout PIX WOOVI (Frontend Only)
 
 ## Here is the project on Vercel:
 
