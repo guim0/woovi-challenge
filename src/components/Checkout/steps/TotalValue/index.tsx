@@ -16,7 +16,6 @@ import {
   ValueTimesContainer,
 } from "./style";
 
-// Definindo o tipo para os itens de parcelamento
 type Installment = {
   times: number;
   value: string;
@@ -163,7 +162,7 @@ export const TotalValueOptions = (props: {
 
               {items.times === 4 && (
                 <BannerContainer>
-                  <div>
+                  <div style={{ fontSize: ".9rem" }}>
                     <b> -3% de juros:</b> Melhor opção de parcelamento
                   </div>
                   <Tail />
